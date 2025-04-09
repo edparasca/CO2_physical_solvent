@@ -5,7 +5,7 @@ import torch
 from lightning import pytorch as pl
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from chemprop import data, featurizers, nn, utils
+from chemprop import data, featurizers, utils
 from chemprop.models import multi_prod
 
 input_path = "../data/dataset3.csv"
@@ -241,24 +241,3 @@ summary_metrics = pd.concat([summary_metrics_train, summary_metrics_test])
 summary_metrics_output_path = "../results/summary_metrics.csv"
 summary_metrics.to_csv(summary_metrics_output_path)
 print(f"Saving summary metrics in: {summary_metrics_output_path}")
-
-# final_train_results = pd.read_csv("../results/all_results_train.csv")
-# final_test_results = pd.read_csv("../results/all_results_test.csv")
-
-# grouping_columns = [
-#     'Component 1', 'CAS-RN 1', 'Component 2', 'CAS-RN 2', 
-#     'Liquid Fraction 1 (mol/mol)', 'Temperature (°C)', 
-#     'Liquid Fraction 2 (mol/mol)', 'Pressure EXP (bar)', 
-#     'SMILES 1', 'SMILES 2'
-# ]
-
-# final_train_results = final_train_results.groupby(grouping_columns, as_index=False)['Pressure PRED (bar)'].mean()
-# final_test_results = final_test_results.groupby(grouping_columns, as_index=False)['Pressure PRED (bar)'].mean()
-
-# train_results_output_path = "../results/all_results_train_mean.csv"
-# final_train_results.to_csv(train_results_output_path, index=False)
-# print(f"Saving results in: {train_results_output_path}")
-
-# test_results_output_path = "../results/all_results_test_mean.csv"
-# final_test_results.to_csv(test_results_output_path, index=False)
-# print(f"Saving results in: {test_results_output_path}")
