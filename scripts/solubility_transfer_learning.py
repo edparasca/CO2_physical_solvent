@@ -69,7 +69,6 @@ for i in range(n_splits * n_repeats):
         seed=random_state + i
     )
     
-    # Ottieni i dati splittati di questa fold
     train_data_i, val_data_i, test_data_i = data.split_data_by_indices(
         all_data,
         train_idx,
@@ -77,7 +76,6 @@ for i in range(n_splits * n_repeats):
         test_idx
     )
     
-    # Accumula
     k_train_data.append(train_data_i)
     k_val_data.append(val_data_i)
     k_test_data.append(test_data_i)
